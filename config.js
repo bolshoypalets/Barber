@@ -5,8 +5,8 @@ const SALON = {
   city: "Санкт-Петербург",
   phone: "+7 (911) 081-16-18",
   phoneLink: "+79110811618",
-  rating: "5.0",
-  reviewsCount: "111",
+  rating: "4.8",
+  reviewsCount: "234",
   
   // Тексты главного экрана
   heroTagline: "Салон красоты · Санкт-Петербург",
