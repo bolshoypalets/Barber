@@ -27,7 +27,95 @@
     <link rel="preload" as="image" href="https://api.qrserver.com/v1/create-qr-code/?size=200x200&amp;data=https://www.instagram.com/jemaaskk/" />
 
     <!-- Основной файл стилей CSS -->
-    <link rel="stylesheet" href="/_next/static/css/acabb02d9eda340a.css" data-precedence="next" />
+    <!-- ================================================== -->
+    <!-- ПАТЧ 1/2: Tailwind CDN + конфиг + кастомные стили  -->
+    <!-- Вставлено ВМЕСТО строки с acabb02d9eda340a.css     -->
+    <!-- ================================================== -->
+
+    <!-- Tailwind Play CDN: компилирует все утилити-классы прямо в браузере -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Шрифты как на оригинале (Inter + Unbounded) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Конфиг Tailwind: фирменные цвета, тени, анимации -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef7f2', 100: '#d7ede1', 200: '#b3dcc6', 300: '#84c4a4',
+                            400: '#57a981', 500: '#358d63', 600: '#27714f', 700: '#205a41',
+                            800: '#1b4834', 900: '#163b2c'
+                        },
+                        gold: { 50: '#fbf7eb', 100: '#f5ecca', 300: '#e4c766', 400: '#d9b23c', 500: '#c99a2e' },
+                        ink: '#1c2521',
+                        border: '#e3e6e4',
+                        card: '#ffffff',
+                        'card-foreground': '#1c2521',
+                        background: '#f7f8f7',
+                        accent: '#f0f4f1',
+                        'muted-foreground': '#6b7570'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Unbounded', 'Inter', 'system-ui', 'sans-serif']
+                    },
+                    boxShadow: {
+                        soft: '0 2px 16px rgba(28, 37, 33, 0.06)',
+                        lift: '0 12px 32px rgba(28, 37, 33, 0.12)',
+                        glow: '0 8px 24px rgba(39, 113, 79, 0.25)'
+                    },
+                    keyframes: {
+                        'float-slow': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    },
+                    animation: {
+                        'float-slow': 'float-slow 5s ease-in-out infinite'
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Кастомные утилити и анимация появления блоков -->
+    <style>
+        /* Утилити, которых нет в стандартном Tailwind */
+        .bg-grid {
+            background-image: linear-gradient(to right, rgba(28, 37, 33, .05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(28, 37, 33, .05) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .mask-fade-b {
+            -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+        }
+        .bg-gradient-radial { background-image: radial-gradient(var(--tw-gradient-stops)); }
+
+        /* Плавное появление: работает с элементами, у которых inline opacity:0 */
+        [style*="opacity:0"] {
+            transition: opacity .7s cubic-bezier(.22, .61, .36, 1), transform .7s cubic-bezier(.22, .61, .36, 1);
+        }
+        [style*="opacity:0"].revealed {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+        /* Поворот шеврона в FAQ при открытом вопросе */
+        .faq-open svg.lucide-chevron-down { transform: rotate(180deg); }
+
+        /* Тёмная тема: базовый фон страницы */
+        html.dark body { background-color: #0b0d0c; }
+
+        /* Плавный скролл по якорям */
+        html { scroll-behavior: smooth; }
+    </style>
 
     <!-- Скрипты Webpack и Next.js (асинхронная загрузка) -->
     <link rel="preload" href="/_next/static/chunks/webpack-39bcfb9df5466403.js" as="script" fetchPriority="low" />
@@ -2359,5 +2447,150 @@
     <!-- Финальный маркер конца данных -->
     <script>self.__next_f.push([1,"b:null\n"])</script>
 
+    <!-- ================================================== -->
+    <!-- ПАТЧ 2/2: анимации и интерактив без Next.js        -->
+    <!-- ================================================== -->
+    <script>
+    (function () {
+        'use strict';
+
+        /* ---------- 1. Появление блоков при скролле (fade-up, как на оригинале) ---------- */
+        var hiddenEls = document.querySelectorAll('[style*="opacity:0"]');
+        function cleanup(el) {
+            el.style.removeProperty('opacity');
+            el.style.removeProperty('transform');
+            el.classList.remove('revealed');
+        }
+        if ('IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) return;
+                    var el = entry.target;
+                    el.classList.add('revealed');
+                    io.unobserve(el);
+                    setTimeout(function () { cleanup(el); }, 800);
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+            hiddenEls.forEach(function (el) { io.observe(el); });
+        } else {
+            hiddenEls.forEach(function (el) { cleanup(el); });
+        }
+
+        /* ---------- 2. Подложка шапки при скролле ---------- */
+        var headerInner = document.querySelector('header > div');
+        function onScroll() {
+            if (!headerInner) return;
+            var scrolled = window.scrollY > 8;
+            headerInner.classList.toggle('bg-card/90', scrolled);
+            headerInner.classList.toggle('backdrop-blur', scrolled);
+            headerInner.classList.toggle('shadow-soft', scrolled);
+            headerInner.classList.toggle('border-border', scrolled);
+            headerInner.classList.toggle('border-transparent', !scrolled);
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+
+        /* ---------- 3. FAQ: ответы + аккордеон ---------- */
+        var faqAnswers = [
+            'Оплата после принятия работы: наличными, картой или по СБП. Для юридических лиц — оплата по счёту.',
+            'Обычно достаточно 24 часов. Срочный выезд — в день обращения (×2), ночной заказ с 22:00 до 8:00 — ×3.',
+            'Нет, клинеры приезжают со своими эко-средствами и профессиональным оборудованием. По желанию можем работать на ваших средствах.',
+            'В течение 24 часов приедем и бесплатно устраним замечания по 40-пунктовому чек-листу. Гарантия зафиксирована в договоре.',
+            'Да, можно оформить регулярную поддерживающую уборку (еженедельно или чаще) с закреплением клинера и скидкой.',
+            'Да, мы используем гипоаллергенные эко-средства на растительной основе, безопасные для детей и животных.'
+        ];
+        var faqButtons = document.querySelectorAll('#faq button[aria-controls]');
+        faqButtons.forEach(function (btn, i) {
+            var panel = document.getElementById(btn.getAttribute('aria-controls'));
+            if (panel && !panel.firstChild && faqAnswers[i]) {
+                panel.innerHTML = '<div class="px-6 pb-5 text-sm leading-relaxed text-muted-foreground">' + faqAnswers[i] + '</div>';
+            }
+            btn.addEventListener('click', function () {
+                var open = btn.getAttribute('aria-expanded') === 'true';
+                btn.setAttribute('aria-expanded', String(!open));
+                btn.classList.toggle('faq-open', !open);
+                if (panel) {
+                    if (open) { panel.setAttribute('hidden', ''); } else { panel.removeAttribute('hidden'); }
+                }
+            });
+        });
+
+        /* ---------- 4. Слайдеры «До / После» ---------- */
+        document.querySelectorAll('input[type="range"][aria-label^="Сравнение"]').forEach(function (range) {
+            var box = range.parentElement;
+            if (!box) return;
+            var topLayer = null, divider = null;
+            Array.prototype.forEach.call(box.children, function (child) {
+                var s = child.getAttribute('style') || '';
+                if (child.tagName === 'DIV' && s.indexOf('width:') !== -1) topLayer = child;
+                if (child.tagName === 'DIV' && s.indexOf('left:') !== -1) divider = child;
+            });
+            range.addEventListener('input', function () {
+                var v = range.value + '%';
+                if (topLayer) topLayer.style.width = v;
+                if (divider) divider.style.left = v;
+            });
+        });
+
+        /* ---------- 5. Переключатель тёмной/светлой темы ---------- */
+        document.querySelectorAll('button[aria-label*="тему"]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var dark = document.documentElement.classList.toggle('dark');
+                document.querySelectorAll('button[aria-label*="тему"]').forEach(function (b) {
+                    b.setAttribute('aria-label', dark ? 'Включить светлую тему' : 'Включить тёмную тему');
+                });
+            });
+        });
+
+        /* ---------- 6. Мобильное меню (бургер) ---------- */
+        var burger = document.querySelector('button[aria-label="Меню"]');
+        if (burger) {
+            burger.addEventListener('click', function () {
+                var existing = document.getElementById('mobile-menu');
+                if (existing) { existing.remove(); return; }
+                var menu = document.createElement('div');
+                menu.id = 'mobile-menu';
+                menu.className = 'fixed inset-x-4 top-20 z-50 flex flex-col gap-1 rounded-2xl border border-border bg-card p-4 shadow-lift';
+                document.querySelectorAll('header nav a').forEach(function (a) {
+                    var link = a.cloneNode(true);
+                    link.className = 'rounded-xl px-4 py-3 text-sm font-medium text-ink transition-colors hover:bg-accent';
+                    link.addEventListener('click', function () { menu.remove(); });
+                    menu.appendChild(link);
+                });
+                document.body.appendChild(menu);
+            });
+        }
+
+        /* ---------- 7. Форма заявки: тост вместо перезагрузки ---------- */
+        function showToast(text) {
+            var t = document.createElement('div');
+            t.textContent = text;
+            t.className = 'fixed left-1/2 top-6 z-[100] -translate-x-1/2 rounded-xl border border-border bg-card px-5 py-3 text-sm font-medium text-ink shadow-lift';
+            document.body.appendChild(t);
+            setTimeout(function () {
+                t.style.transition = 'opacity .4s';
+                t.style.opacity = '0';
+                setTimeout(function () { t.remove(); }, 400);
+            }, 3000);
+        }
+        var form = document.querySelector('#pricing form');
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                showToast('Заявка отправлена! Мы перезвоним в течение 15 минут.');
+                form.reset();
+            });
+        }
+
+        /* ---------- 8. Плавный скролл по якорям (fallback) ---------- */
+        document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+            a.addEventListener('click', function (e) {
+                var id = a.getAttribute('href').slice(1);
+                var target = id && document.getElementById(id);
+                if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+            });
+        });
+    })();
+            </script>
 </body>
 </html>
