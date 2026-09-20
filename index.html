@@ -38,7 +38,7 @@
     <!-- Шрифты как на оригинале (Inter + Unbounded) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet" />
 
     <!-- Конфиг Tailwind: фирменные цвета, тени, анимации -->
     <script>
@@ -48,27 +48,34 @@
                 extend: {
                     colors: {
                         brand: {
-                            50: '#eef7f2', 100: '#d7ede1', 200: '#b3dcc6', 300: '#84c4a4',
-                            400: '#57a981', 500: '#358d63', 600: '#27714f', 700: '#205a41',
-                            800: '#1b4834', 900: '#163b2c'
+                            50: 'rgb(var(--b50) / <alpha-value>)',
+                            100: 'rgb(var(--b100) / <alpha-value>)',
+                            200: 'rgb(var(--b200) / <alpha-value>)',
+                            300: 'rgb(var(--b300) / <alpha-value>)',
+                            400: 'rgb(var(--b400) / <alpha-value>)',
+                            500: 'rgb(var(--b500) / <alpha-value>)',
+                            600: 'rgb(var(--b600) / <alpha-value>)',
+                            700: 'rgb(var(--b700) / <alpha-value>)',
+                            800: 'rgb(var(--b800) / <alpha-value>)',
+                            900: 'rgb(var(--b900) / <alpha-value>)'
                         },
                         gold: { 50: '#fbf7eb', 100: '#f5ecca', 300: '#e4c766', 400: '#d9b23c', 500: '#c99a2e' },
-                        ink: '#1c2521',
-                        border: '#e3e6e4',
-                        card: '#ffffff',
-                        'card-foreground': '#1c2521',
-                        background: '#f7f8f7',
-                        accent: '#f0f4f1',
-                        'muted-foreground': '#6b7570'
+                        ink: 'rgb(var(--ink) / <alpha-value>)',
+                        border: 'rgb(var(--border) / <alpha-value>)',
+                        card: 'rgb(var(--card) / <alpha-value>)',
+                        'card-foreground': 'rgb(var(--ink) / <alpha-value>)',
+                        background: 'rgb(var(--bg) / <alpha-value>)',
+                        accent: 'rgb(var(--accent) / <alpha-value>)',
+                        'muted-foreground': 'rgb(var(--muted) / <alpha-value>)'
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
-                        display: ['Unbounded', 'Inter', 'system-ui', 'sans-serif']
+                        display: ['Playfair Display', 'Georgia', 'serif']
                     },
                     boxShadow: {
-                        soft: '0 2px 16px rgba(28, 37, 33, 0.06)',
-                        lift: '0 12px 32px rgba(28, 37, 33, 0.12)',
-                        glow: '0 8px 24px rgba(39, 113, 79, 0.25)'
+                        soft: '0 2px 16px rgba(20, 40, 35, 0.06)',
+                        lift: '0 12px 32px rgba(20, 40, 35, 0.12)',
+                        glow: '0 8px 24px rgba(15, 118, 110, 0.25)'
                     },
                     keyframes: {
                         'float-slow': {
