@@ -170,8 +170,14 @@
         }
 
         /* Кнопки шапки (тема + бургер) — круглые, как в оригинале */
+        /* Круглые кнопки шапки: !important перебивает Tailwind-класс rounded-xl */
         header button {
-            border-radius: 9999px;
+            border-radius: 9999px !important;
+        }
+
+        /* Золотая луна в тёмной теме, как в оригинале */
+        html.dark header .lucide-moon {
+            color: #e7c66a;
         }
 
         /* Смена иконки солнце/луна при переключении темы */
