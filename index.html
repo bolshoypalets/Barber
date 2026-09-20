@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JeMaASK — Премиальный клининг в Москве</title>
+    <meta name="description" content="Премиальный клининг вашего дома от JeMaASK. Проверенные специалисты, эко-средства и фиксированная цена.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --accent: #10b981;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --text-dark: #0f172a;
+            --text-gray: #64748b;
+            --border: #e2e8f0;
+            --radius: 12px;
+            --shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        /* Utility */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 1.125rem;
+            margin-bottom: 48px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Promo Banner */
+        .promo-banner {
+            background: linear-gradient(135deg, var(--accent), #059669);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        /* Header / Hero */
+        header {
+            background: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 32px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 48px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--bg-white);
+            padding: 32px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 12px;
+            font-size: 1.25rem;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--bg-white);
+            border-radius: var(--radius);
+            padding: 32px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border);
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 16px;
+        }
+
+        .service-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .service-duration {
+            background: var(--bg-light);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        .service-card ul {
+            list-style: none;
+            margin: 16px 0 24px;
+            flex-grow: 1;
+        }
+
+        .service-card li {
+            padding: 8px 0;
+            color: var(--text-gray);
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .service-card li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Pricing Table */
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 32px;
+        }
+
+        .pricing-table th, .pricing-table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pricing-table th {
+            background: var(--bg-light);
+            font-weight: 600;
+        }
+
+        .coefficients {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        .coef-card {
+            background: var(--bg-white);
+            padding: 20px;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .coef-multiplier {
+            font-weight: 700;
+            color: var(--primary);
+            float: right;
+        }
+
+        /* Form */
+        .form-section {
+            background: var(--bg-white);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--bg-light);
+            padding: 40px;
+            border-radius: var(--radius);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Process */
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin: 0 auto 16px;
+        }
+
+        /* Before/After */
+        .ba-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            margin: 0 auto;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .ba-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .ba-before {
+            background-image: url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80');
+            width: 50%;
+            border-right: 3px solid white;
+            z-index: 2;
+        }
+
+        .ba-after {
+            background-image: url('https://images.unsplash.com/photo-1527513123382-390dc304dd70?auto=format&fit=crop&w=800&q=80');
+            z-index: 1;
+        }
+
+        .ba-label {
+            position: absolute;
+            top: 20px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .ba-label.before { left: 20px; }
+        .ba-label.after { right: 20px; }
+
+        /* Reviews */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .review-card {
+            background: var(--bg-white);
+            padding: 24px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+        }
+
+        .review-source {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+        }
+
+        .review-text {
+            color: var(--text-gray);
+            font-style: italic;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: var(--bg-white);
+            margin-bottom: 12px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--text-gray);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 200px;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col p, .footer-col a {
+            color: #94a3b8;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: background 0.2s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .section { padding: 60px 0; }
+            .ba-container { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Promo Banner -->
+    <div class="promo-banner">
+        🎁 АКЦИЯ: Если вы обращаетесь впервые — для вас действует СКИДКА! За вашу цену сделаем работу так, чтобы вы остались довольны.
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">JeMaASK</a>
+                <ul class="nav-links">
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#pricing">Цены</a></li>
+                    <li><a href="#process">Как мы работаем</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+                <a href="tel:+79067077657" class="btn">+7 906 707 76 57</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Безупречная чистота.<br>Без усилий.</h1>
+            <p>Премиальный клининг вашего дома от JeMaASK. Проверенные специалисты, эко-средства и фиксированная цена — без скрытых доплат.</p>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <a href="#form" class="btn">Узнать стоимость</a>
+                <a href="#process" class="btn btn-outline" style="color: white; border-color: white;">Как мы работаем</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-value">4.95</div>
+                    <div class="stat-label">Рейтинг из 5.0<br>(2 400+ отзывов)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">12 480</div>
+                    <div class="stat-label">Уборок сделано</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">12+ лет</div>
+                    <div class="stat-label">Профессионального<br>опыта</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" id="features">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают нас</h2>
+            <p class="section-subtitle">Премиальный сервис в каждой детали. Мы продумали всё, чтобы вы получили безупречный результат без лишних забот.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Гарантия качества</h3>
+                    <p>Проверяем результат по 40 пунктам. Если что-то не так — переделываем бесплатно.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌿</div>
+                    <h3>Эко-средства</h3>
+                    <p>Используем гипоаллергенные средства, безопасные для детей и животных.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏱️</div>
+                    <h3>Точно в срок</h3>
+                    <p>Приезжаем в назначенное время. Опоздание — скидка 10% на следующий заказ.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👤</div>
+                    <h3>Проверенные специалисты</h3>
+                    <p>Каждый клинер проходит проверку и обучение. Только проверенные люди.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Фиксированная цена</h3>
+                    <p>Цена из калькулятора не меняется. Никаких доплат на месте.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧹</div>
+                    <h3>Профессиональное оборудование</h3>
+                    <p>Karcher, профессиональные пылесосы и пароочистители для идеального результата.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="services" style="background: var(--bg-white);">
+        <div class="container">
+            <h2 class="section-title">Каталог услуг</h2>
+            <p class="section-subtitle">Уборка под любую задачу. Выберите подходящий тип уборки для квартиры до 50 м². Цены прозрачны и фиксированы.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3>Ежедневная</h3>
+                        <span class="service-price">3 000 ₽</span>
+                    </div>
+                    <span class="service-duration">2 часа</span>
+                    <ul>
+                        <li>Влажная уборка полов</li>
+                        <li>Удаление пыли с поверхностей</li>
+                        <li>Уборка санузла</li>
+                        <li>Вынос мусора</li>
+                    </ul>
+                    <a href="#form" class="btn" style="text-align: center;">Оставить заявку</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3>Поддерживающая</h3>
+                        <span class="service-price">6 800 ₽</span>
+                    </div>
+                    <span class="service-duration">4 часа</span>
+                    <ul>
+                        <li>Всё из ежедневной</li>
+                        <li>Мытьё кухонной техники</li>
+                        <li>Очистка плинтусов и дверей</li>
+                        <li>Полировка зеркал</li>
+                    </ul>
+                    <a href="#form" class="btn" style="text-align: center;">Оставить заявку</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3>Генеральная</h3>
+                        <span class="service-price">21 600 ₽</span>
+                    </div>
+                    <span class="service-duration">7 часов</span>
+                    <ul>
+                        <li>Всё из поддерживающей</li>
+                        <li>Мытьё стен и потолков</li>
+                        <li>Чистка мягкой мебели</li>
+                        <li>Обработка труднодоступных мест</li>
+                    </ul>
+                    <a href="#form" class="btn" style="text-align: center;">Оставить заявку</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3>После ремонта</h3>
+                        <span class="service-price">25 600 ₽</span>
+                    </div>
+                    <span class="service-duration">8 часов</span>
+                    <ul>
+                        <li>Удаление строительной пыли</li>
+                        <li>Очистка от краски и клея</li>
+                        <li>Мытьё окон после ремонта</li>
+                        <li>Чистка всех поверхностей</li>
+                    </ul>
+                    <a href="#form" class="btn" style="text-align: center;">Оставить заявку</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3>После аренды</h3>
+                        <span class="service-price">19 800 ₽</span>
+                    </div>
+                    <span class="service-duration">6 часов</span>
+                    <ul>
+                        <li>Глубокая очистка кухни</li>
+                        <li>Дезинфекция санузла</li>
+                        <li>Удаление пятен и налёта</li>
+                        <li>Мытьё окон и зеркал</li>
+                    </ul>
+                    <a href="#form" class="btn" style="text-align: center;">Оставить заявку</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3>С животными</h3>
+                        <span class="service-price">Договорная</span>
+                    </div>
+                    <span class="service-duration">8 часов</span>
+                    <ul>
+                        <li>Удаление шерсти</li>
+                        <li>Нейтрализация запахов</li>
+                        <li>Безопасные средства для животных</li>
+                        <li>Чистка лежанок и когтеточек</li>
+                    </ul>
+                    <a href="#form" class="btn" style="text-align: center;">Оставить заявку</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Цены по площади</h2>
+            <p class="section-subtitle">Стоимость уборок в зависимости от типа помещения</p>
+            
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>Помещение</th>
+                        <th>Генеральная</th>
+                        <th>После ремонта</th>
+                        <th>После аренды</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1-комн.</td><td>21 600 ₽</td><td>25 600 ₽</td><td>19 800 ₽</td></tr>
+                    <tr><td>2-комн.</td><td>28 800 ₽</td><td>32 000 ₽</td><td>27 000 ₽</td></tr>
+                    <tr><td>3-комн.</td><td>36 000 ₽</td><td>39 200 ₽</td><td>34 200 ₽</td></tr>
+                    <tr><td>4-комн.</td><td>43 200 ₽</td><td>46 400 ₽</td><td>42 600 ₽</td></tr>
+                    <tr><td>Коттеджи</td><td>28 800 ₽</td><td>31 000 ₽</td><td>27 000 ₽</td></tr>
+                    <tr><td>Бани</td><td>12 700 ₽</td><td>15 900 ₽</td><td>10 700 ₽</td></tr>
+                </tbody>
+            </table>
+
+            <h3 style="margin-bottom: 24px; text-align: center;">Коэффициенты и условия</h3>
+            <div class="coefficients">
+                <div class="coef-card">
+                    <span class="coef-multiplier">×2</span>
+                    <h4>Срочные заказы</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-gray);">Ускоренный выезд специалиста в день обращения.</p>
+                </div>
+                <div class="coef-card">
+                    <span class="coef-multiplier">×3</span>
+                    <h4>Ночные заказы</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-gray);">Уборка в ночное время с 22:00 до 8:00.</p>
+                </div>
+                <div class="coef-card">
+                    <span class="coef-multiplier">+10%</span>
+                    <h4>Лёгкое загрязнение</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-gray);">Небольшое загрязнение поверхностей и санузла.</p>
+                </div>
+                <div class="coef-card">
+                    <span class="coef-multiplier">+20%</span>
+                    <h4>Среднее загрязнение</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-gray);">Заметные пятна, налёт, пыль в труднодоступных местах.</p>
+                </div>
+                <div class="coef-card">
+                    <span class="coef-multiplier">+30%</span>
+                    <h4>Высокое загрязнение</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-gray);">Сильные загрязнения, застарелые пятна, жир.</p>
+                </div>
+                <div class="coef-card">
+                    <span class="coef-multiplier">+40%</span>
+                    <h4>Очень высокое загрязнение</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-gray);">Экстремальные загрязнения, требующие спец. подхода.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <section class="section form-section" id="form">
+        <div class="container">
+            <h2 class="section-title">Оставьте заявку</h2>
+            <p class="section-subtitle">Мы перезвоним за 15 минут. Заполните форму, выбрав нужный тип уборки.</p>
+            
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в течение 15 минут.');">
+                <div class="form-group">
+                    <label>Тип уборки / услуга *</label>
+                    <select required>
+                        <option>Ежедневная — 3 000 ₽</option>
+                        <option>Поддерживающая — 6 800 ₽</option>
+                        <option>Генеральная — 21 600 ₽</option>
+                        <option>После ремонта — 25 600 ₽</option>
+                        <option>После аренды — 19 800 ₽</option>
+                        <option>Гипоаллергенная — 10 000 ₽</option>
+                        <option>Сухая — 7 200 ₽</option>
+                        <option>Эко уборка — 10 800 ₽</option>
+                        <option>С животными — договорная</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Имя *</label>
+                    <input type="text" placeholder="Ваше имя" required>
+                </div>
+                <div class="form-group">
+                    <label>Телефон *</label>
+                    <input type="tel" placeholder="+7 (___) ___-__-__" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="example@mail.ru">
+                </div>
+                <div class="form-group">
+                    <label>Адрес</label>
+                    <input type="text" placeholder="Город, улица, дом, квартира">
+                </div>
+                <div class="form-group">
+                    <label>Желаемая дата</label>
+                    <input type="date">
+                </div>
+                <div class="form-group">
+                    <label>Срочность</label>
+                    <select>
+                        <option>Обычный заказ</option>
+                        <option>Срочный заказ (×2)</option>
+                        <option>Ночной заказ (×3)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Степень загрязнения</label>
+                    <select>
+                        <option>Без коэффициента</option>
+                        <option>Лёгкое загрязнение (+10%)</option>
+                        <option>Среднее загрязнение (+20%)</option>
+                        <option>Высокое загрязнение (+30%)</option>
+                        <option>Очень высокое загрязнение (+40%)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Комментарий</label>
+                    <textarea rows="3" placeholder="Дополнительные пожелания..."></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Отправить заявку</button>
+                <p style="font-size: 0.8rem; color: var(--text-gray); text-align: center; margin-top: 12px;">
+                    Нажимая кнопку, вы соглашаетесь с обработкой персональных данных
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section" id="process">
+        <div class="container">
+            <h2 class="section-title">Как проходит уборка</h2>
+            <p class="section-subtitle">Прозрачный процесс — от заявки до сияния. Пять шагов, после которых ваш дом становится идеально чистым.</p>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <h3>Онлайн-заявка</h3>
+                    <p style="color: var(--text-gray); font-size: 0.9rem;">Рассчитайте стоимость и оформите заказ за минуту. Без звонков и ожидания.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <h3>Подготовка</h3>
+                    <p style="color: var(--text-gray); font-size: 0.9rem;">Подбираем клинера и эко-средства под ваш тип уборки и поверхность.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <h3>Уборка</h3>
+                    <p style="color: var(--text-gray); font-size: 0.9rem;">Специалист приезжает вовремя с профессиональным оборудованием и чек-листом.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">04</div>
+                    <h3>Контроль качества</h3>
+                    <p style="color: var(--text-gray); font-size: 0.9rem;">Проверяем результат по 40 пунктам. Если что-то не так — переделываем бесплатно.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">05</div>
+                    <h3>Чистый дом</h3>
+                    <p style="color: var(--text-gray); font-size: 0.9rem;">Вы принимаете работу и наслаждаетесь безупречной чистотой. Оплата только после.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before / After -->
+    <section class="section" style="background: var(--bg-white);">
+        <div class="container">
+            <h2 class="section-title">Результат, который видно сразу</h2>
+            <p class="section-subtitle">Потяните ползунок, чтобы увидеть разницу до и после уборки.</p>
+            
+            <div class="ba-container">
+                <div class="ba-image ba-after"></div>
+                <div class="ba-image ba-before"></div>
+                <span class="ba-label before">До</span>
+                <span class="ba-label after">После</span>
+            </div>
+            <p style="text-align: center; margin-top: 16px; color: var(--text-gray); font-size: 0.9rem;">* Интерактивный слайдер демонстрирует типичный результат уборки кухни</p>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="section" id="reviews">
+        <div class="container">
+            <h2 class="section-title">Нам доверяют тысячи семей</h2>
+            <p class="section-subtitle">4.95 на основе 2 400+ отзывов</p>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="reviewer-name">Анна Ковалёва</span>
+                        <span class="review-source">Яндекс · март 2026</span>
+                    </div>
+                    <p class="review-text">"Заказывала генеральную уборку после переезда. Команда приехала вовремя, отмыла всё до блеска — даже окна, которые казались безнадёжными."</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="reviewer-name">Дмитрий Соколов</span>
+                        <span class="review-source">2ГИС · февраль 2026</span>
+                    </div>
+                    <p class="review-text">"Брал клининг после ремонта. Строительной пыли не осталось ни следа. Цена соответствовала расчету — никаких доплат на месте."</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="reviewer-name">Мария Петрова</span>
+                        <span class="review-source">Google · апрель 2026</span>
+                    </div>
+                    <p class="review-text">"Подписана на еженедельную поддерживающую уборку. Девочки всегда аккуратные, вежливые, приходят со своими средствами."</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="reviewer-name">Игорь Лебедев</span>
+                        <span class="review-source">Авито · январь 2026</span>
+                    </div>
+                    <p class="review-text">"Нужна была срочная уборка перед приездом родственников. Записался вечером — на утро уже убрали. Качество на высоте."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" style="background: var(--bg-white);">
+        <div class="container" style="max-width: 800px;">
+            <h2 class="section-title">Частые вопросы</h2>
+            <p class="section-subtitle">Собрали всё, что спрашивают чаще всего. Не нашли ответ — напишите нам.</p>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Как оплатить уборку?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Оплата производится только после выполнения работы и вашей проверки качества. Принимаем наличные, переводы и безналичный расчёт для юридических лиц.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Нужно ли предоставлять средства и инвентарь?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Нет, наши специалисты приезжают со всем необходимым: профессиональной химией, пылесосами, пароочистителями и микрофиброй.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Что если мне не понравится результат?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Мы проверяем качество по 40-пунктовому чек-листу. Если вы заметите недочёт, мы бесплатно устраним его в кратчайшие сроки.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Безопасны ли средства для детей и животных?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Да, мы используем сертифицированные гипоаллергенные и эко-средства на растительной основе, полностью безопасные для всех членов семьи.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacts">
+        <div class="container">
+
+<div class="footer-grid">
+                <div class="footer-col">
+                    <h4>JeMaASK</h4>
+                    <p>Премиальный клининг в Москве и Московской области. Более 12 лет безупречной работы и 12 480+ выполненных уборок.</p>
+                    <div class="social-links">
+                        <a href="https://vk.com/jemaask_cleaning" title="ВКонтакте" target="_blank">VK</a>
+                        <a href="https://t.me/JEMAASK" title="Telegram" target="_blank">TG</a>
+                        <a href="https://wa.me/79067077657" title="WhatsApp" target="_blank">WA</a>
+                        <a href="https://instagram.com/jemaask_cleaning" title="Instagram" target="_blank">IG</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Контакты</h4>
+                    <p>📞 <a href="tel:+79067077657" style="display:inline; color: inherit;">+7 906 707 76 57</a></p>
+                    <p>📍 Москва и Московская область</p>
+                    <p>⏰ Ежедневно с 8:00 до 22:00</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Услуги</h4>
+                    <a href="#services">Ежедневная уборка</a>
+                    <a href="#services">Генеральная уборка</a>
+                    <a href="#services">Уборка после ремонта</a>
+                    <a href="#services">Химчистка и мойка окон</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Клиентам</h4>
+                    <a href="#process">Как мы работаем</a>
+                    <a href="#pricing">Цены и коэффициенты</a>
+                    <a href="#reviews">Отзывы</a>
+                    <a href="#form">Оставить заявку</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                © 2026 JeMaASK. Все права защищены. <a href="#" style="color: #94a3b8; text-decoration: underline;">Политика конфиденциальности</a>.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript для интерактивности -->
+    <script>
+        // Аккордеон для FAQ
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Закрываем все открытые элементы
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Открываем текущий, если он был закрыт
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // Плавная прокрутка к якорям
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Интерактивный слайдер "До / После"
+        const baContainer = document.querySelector('.ba-container');
+        if (baContainer) {
+            const beforeImage = baContainer.querySelector('.ba-before');
+            
+            const updateSlider = (x) => {
+                const rect = baContainer.getBoundingClientRect();
+                let percentage = ((x - rect.left) / rect.width) * 100;
+                percentage = Math.max(0, Math.min(100, percentage));
+                beforeImage.style.width = percentage + '%';
+            };
+
+            // Для мыши
+            baContainer.addEventListener('mousemove', (e) => {
+                updateSlider(e.clientX);
+            });
+
+            // Для сенсорных экранов (мобильные)
+            baContainer.addEventListener('touchmove', (e) => {
+                updateSlider(e.touches[0].clientX);
+            });
+            
+            // Клик по контейнеру для мгновенного перехода
+            baContainer.addEventListener('click', (e) => {
+                updateSlider(e.clientX);
+            });
+        }
+    </script>
+</body>
+</html>
