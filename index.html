@@ -122,6 +122,76 @@
 
         /* Плавный скролл по якорям */
         html { scroll-behavior: smooth; }
+
+        /* ============ ПЕРЕМЕННЫЕ ТЕМ (как в оригинале) ============ */
+        :root {
+            /* Светлая тема: бирюзовый бренд */
+            --b50: 240 253 250;
+            --b100: 204 251 241;
+            --b200: 153 246 228;
+            --b300: 94 234 212;
+            --b400: 45 212 191;
+            --b500: 13 148 136;
+            --b600: 15 118 110;
+            --b700: 17 94 89;
+            --b800: 17 94 89;
+            --b900: 19 78 74;
+            --ink: 21 36 32;
+            --bg: 234 248 244;
+            --card: 255 255 255;
+            --border: 214 233 228;
+            --accent: 238 246 243;
+            --muted: 100 124 120;
+        }
+        .dark {
+            /* Тёмная тема: золотой бренд на чёрном */
+            --b50: 42 36 20;
+            --b100: 58 49 26;
+            --b200: 120 100 45;
+            --b300: 160 135 60;
+            --b400: 200 170 80;
+            --b500: 231 198 106;
+            --b600: 227 196 111;
+            --b700: 240 212 138;
+            --b800: 245 224 165;
+            --b900: 250 235 195;
+            --ink: 244 239 228;
+            --bg: 10 9 7;
+            --card: 22 19 14;
+            --border: 107 92 51;
+            --accent: 30 26 18;
+            --muted: 168 162 150;
+        }
+
+        /* Фон и текст страницы следуют за темой */
+        body {
+            background-color: rgb(var(--bg));
+            color: rgb(var(--ink));
+        }
+
+        /* Кнопки шапки (тема + бургер) — круглые, как в оригинале */
+        header button {
+            border-radius: 9999px;
+        }
+
+        /* Смена иконки солнце/луна при переключении темы */
+        html.dark button[aria-label*="тему"] .lucide-sun {
+            transform: rotate(90deg) scale(0);
+        }
+        html.dark button[aria-label*="тему"] .lucide-moon {
+            transform: rotate(0deg) scale(1);
+        }
+
+        /* Сетка на фоне: бирюзовая в светлой, золотая в тёмной */
+        .bg-grid {
+            background-image: linear-gradient(to right, rgba(15, 118, 110, .06) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(15, 118, 110, .06) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        html.dark .bg-grid {
+            background-image: linear-gradient(to right, rgba(231, 198, 106, .12) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(231, 198, 106, .12) 1px, transparent 1px);
+        }
     </style>
 
     <!-- Скрипты Webpack и Next.js (асинхронная загрузка) -->
